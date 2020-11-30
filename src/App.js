@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Balance } from './components/Balance';
+import { AccountSummary } from  './components/AccountSummary';
+import { TransactionHistory } from './components/TransactionHistory';
+import { AddTransaction } from './components/AddTransaction';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { GlobalProvider } from './context/GlobalState';
+import { Container, Row, Col } from 'react-bootstrap';
+//import {Footer2} from './components/Footer2'
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <GlobalProvider>
+      <Container className='bg-header-text' style={{width:"80%"}} >
+      <div className='jumbotron bg-header-text text-center'>
+            <Container  sm={4} className='expense2'>
+            <h1>  Expense Tracker</h1>
+            </Container>
+      </div>
+      </Container>
+      <Container fluid className=' bg-header-text'  style={{width:"80%"}} >
+        <Row>
+          <Col>
+            <Balance />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <AccountSummary />
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={3}>
+            <AddTransaction />
+          </Col>
+          <Col sm={9}>
+          <TransactionHistory />
+          </Col>
+        </Row> 
+      </Container>
+    </GlobalProvider>
   );
 }
-
-export default App;
